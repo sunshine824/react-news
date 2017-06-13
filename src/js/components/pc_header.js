@@ -2,16 +2,22 @@
  * Created by Gatsby on 2017/6/13.
  */
 import React from 'react';
-import {Row, Col, Menu, Icon} from 'antd';
+import ReactDOM from 'react-dom';
+import {Row, Col, Menu, Icon, message, Form, Input, Button, Checkbox, Modal} from 'antd';
+const FromItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-import ReactDOM from 'react-dom';
 
-export default class PCHeader extends React.Component {
+class PCHeader extends React.Component {
     constructor() {
         super();
         this.state = {
-            current: 'top'
+            current: 'top',
+            modalVisible: false,
+            action: 'Login',
+            hasLogined: false,
+            userNickName: '',
+            userId: 0
         }
     };
 
@@ -22,6 +28,24 @@ export default class PCHeader extends React.Component {
     };
 
     render() {
+        let {getFieldProps} = this.props.form;
+        const userShow = this.state.hasLogined
+            ?
+            <Menu.Item key="logout" class="register">
+                <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
+                &nbsp;&nbsp;
+                <Link target="_blank">
+                    <Button type="dashed" htmlType="button">个人中心</Button>
+                </Link>
+                &nbsp;&nbsp;
+                <Button ghost htmlType="button">退出</Button>
+            </Menu.Item>
+            :
+            <Menu-Item key="register" class="register">
+                <Icon type="appstore" style={{paddingRight:'8px'}}></Icon>
+                注册/登录
+            </Menu-Item>;
+
         const menu = [
             {key: 'top', icon: 'appstore', title: '头条'},
             {key: 'shihui', icon: 'appstore', title: '社会'},
@@ -53,7 +77,12 @@ export default class PCHeader extends React.Component {
                                     </Menu.Item>
                                 })
                             }
+                            {userShow}
                         </Menu>
+
+                        <Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible}>
+
+                        </Modal>
                     </Col>
                     <Col span={2}></Col>
                 </Row>
@@ -61,3 +90,5 @@ export default class PCHeader extends React.Component {
         );
     };
 }
+
+export default PCHeader = Form.create({})(PCHeader)
