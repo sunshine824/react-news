@@ -22,6 +22,14 @@ class PCHeader extends React.Component {
         }
     };
 
+    componentWillMount(){
+      if(localStorage.userId!=''){
+          //渲染组件之前初始化用户信息，刷新页面依然显示登录状态
+          this.setState({hasLogined:true});
+          this.setState({userNickName:localStorage.userNickName,userId:localStorage.userId})
+      }
+    };
+
     handleClick(e) {
         if (e.key == "register") {
             this.setState({current: 'register'})
@@ -53,19 +61,32 @@ class PCHeader extends React.Component {
             .then(res => {
                 res.json()
             })
-            .then(json=>{
+            .then(json => {
                 this.setState({
-                    userNickName:json.userNickName,
-                    userId:json.userId
+                    userNickName: json.userNickName,
+                    userId: json.userId
                 })
+                //请求成功后储存用户信息
+                localStorage.userid= json.UserId;
+                localStorage.userNickName = json.NickUserName;
                 message.error('请求成功！')
             })
-            .catch(err=>{
+            .catch(err => {
                 message.error('请求失败！')
                 console.log(err.message)
             });
-            this.setModalVisible(false)
-    }
+        this.setModalVisible(false)
+    };
+
+    callback(key) {
+        key == 1 ? this.setState({action: 'login'}) : this.setState({action: 'register'})
+    };
+
+    logout(){
+        localStorage.userid= '';
+        localStorage.userNickName = '';
+        this.setState({hasLogined:false});
+    };
 
     render() {
         let {getFieldDecorator} = this.props.form;
@@ -78,7 +99,7 @@ class PCHeader extends React.Component {
                     <Button type="dashed" htmlType="button">个人中心</Button>
                 </Link>
                 &nbsp;&nbsp;
-                <Button ghost htmlType="button">退出</Button>
+                <Button ghost htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
             </Menu.Item>
             :
             <Menu.Item key="register" class="register">
@@ -124,7 +145,28 @@ class PCHeader extends React.Component {
                                onCancel={this.setModalVisible.bind(this, false)}
                                onOk={this.setModalVisible.bind(this, false)}
                                okText="关闭" cancelText="取消">
-                            <Tabs type="card">
+                            <Tabs type="card" onChange={this.callback.bind(this)}>
+                                <TabPane tab="登录" key="1">
+                                    <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                                        <FromItem label="账户">
+                                            {getFieldDecorator('userName', {
+                                                rules: [{required: true, message: '请输入您的账号!'}],
+                                            })(
+                                                <Input prefix={<Icon type="user" style={{fontSize: 13}}/>}
+                                                       placeholder="请输入您的账号"/>
+                                            )}
+                                        </FromItem>
+                                        <FromItem label="密码">
+                                            {getFieldDecorator('password', {
+                                                rules: [{required: true, message: '请输入您的密码!'}],
+                                            })(
+                                                <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>}
+                                                       type="password" placeholder="请输入您的密码"/>
+                                            )}
+                                        </FromItem>
+                                        <Button type="primary" htmlType="submit">登录</Button>
+                                    </Form>
+                                </TabPane>
                                 <TabPane tab="注册" key="2">
                                     <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
