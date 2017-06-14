@@ -2,12 +2,19 @@
  * Created by Gatsby on 2017/6/13.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Mock from 'mockjs';
 import {Row, Col, Menu, Icon, message, Form, Input, Button, Checkbox, Modal, Tabs} from 'antd';
 const FromItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const TabPane = Tabs.TabPane;
+
+Mock.mock('/api/login',{
+    data:{
+        userNickName:'sunshine824',
+        userId:0
+    }
+})
 
 class PCHeader extends React.Component {
     constructor() {
@@ -23,7 +30,7 @@ class PCHeader extends React.Component {
     };
 
     componentWillMount(){
-      if(localStorage.userId!=''){
+      if(localStorage.userId!=undefined){
           //渲染组件之前初始化用户信息，刷新页面依然显示登录状态
           this.setState({hasLogined:true});
           this.setState({userNickName:localStorage.userNickName,userId:localStorage.userId})
@@ -48,16 +55,26 @@ class PCHeader extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        var formData = '';
-        var myFetchOptions = {
-            method: 'GET',
-        };
+        let formData = '';
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 formData = values
             }
         });
-        fetch('url', myFetchOptions)
+        const myFetchOptions = {
+            method: 'POST',
+            mode: "no-cors",
+            body:JSON.stringify({
+                userNickName:formData.userName,
+                password:formData.password
+            }),
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+        fetch('/api/login', myFetchOptions)
             .then(res => {
                 res.json()
             })
@@ -150,7 +167,7 @@ class PCHeader extends React.Component {
                                     <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
                                             {getFieldDecorator('userName', {
-                                                rules: [{required: true, message: '请输入您的账号!'}],
+                                                rules: [{required: false, message: '请输入您的账号!'}],
                                             })(
                                                 <Input prefix={<Icon type="user" style={{fontSize: 13}}/>}
                                                        placeholder="请输入您的账号"/>
@@ -158,7 +175,7 @@ class PCHeader extends React.Component {
                                         </FromItem>
                                         <FromItem label="密码">
                                             {getFieldDecorator('password', {
-                                                rules: [{required: true, message: '请输入您的密码!'}],
+                                                rules: [{required: false, message: '请输入您的密码!'}],
                                             })(
                                                 <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>}
                                                        type="password" placeholder="请输入您的密码"/>
@@ -171,7 +188,7 @@ class PCHeader extends React.Component {
                                     <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
                                             {getFieldDecorator('r_userName', {
-                                                rules: [{required: true, message: '请输入您的账号!'}],
+                                                rules: [{required: false, message: '请输入您的账号!'}],
                                             })(
                                                 <Input prefix={<Icon type="user" style={{fontSize: 13}}/>}
                                                        placeholder="请输入您的账号"/>
@@ -179,7 +196,7 @@ class PCHeader extends React.Component {
                                         </FromItem>
                                         <FromItem label="密码">
                                             {getFieldDecorator('r_password', {
-                                                rules: [{required: true, message: '请输入您的密码!'}],
+                                                rules: [{required: false, message: '请输入您的密码!'}],
                                             })(
                                                 <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>}
                                                        type="password" placeholder="请输入您的密码"/>
@@ -187,7 +204,7 @@ class PCHeader extends React.Component {
                                         </FromItem>
                                         <FromItem label="确认密码">
                                             {getFieldDecorator('r_confirmPassword', {
-                                                rules: [{required: true, message: '请确认您的密码!'}],
+                                                rules: [{required: false, message: '请确认您的密码!'}],
                                             })(
                                                 <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>}
                                                        type="password" placeholder="请确认您的密码"/>
