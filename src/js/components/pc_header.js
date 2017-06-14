@@ -23,18 +23,16 @@ class PCHeader extends React.Component {
     };
 
     handleClick(e) {
-        /*if(e.key="register"){
+        if(e.key=="register"){
             this.setState({current:'register'})
             this.setModalVisible(true)
         }else {
-            {
-                this.setState({current:e.key})
-            }
-        }*/
-        this.setState({current:e.key})
+            this.setState({current:e.key})
+        }
     };
 
     setModalVisible(value) {
+        //console.log(value)
         this.setState({
             modalVisible: value
         })
@@ -43,7 +41,7 @@ class PCHeader extends React.Component {
 
     }
     render() {
-        let {getFieldProps} = this.props.form;
+        let {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
             ?
             <Menu.Item key="logout" class="register">
@@ -56,10 +54,10 @@ class PCHeader extends React.Component {
                 <Button ghost htmlType="button">退出</Button>
             </Menu.Item>
             :
-            <Menu-Item key="register" class="register">
+            <Menu.Item key="register" class="register">
                 <Icon type="appstore" style={{paddingRight: '8px'}}></Icon>
                 注册/登录
-            </Menu-Item>;
+            </Menu.Item>;
 
         const menu = [
             {key: 'top', icon: 'appstore', title: '头条'},
@@ -96,21 +94,32 @@ class PCHeader extends React.Component {
                         </Menu>
 
                         <Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible}
-                               onCancel={this.setModalVisible(false).bind(this)}
-                               onOK={this.setModalVisible(false).bind()} okText="关闭" cancelText="取消">
+                               onCancel={this.setModalVisible.bind(this,false)}
+                               onOk={this.setModalVisible.bind(this,false)}
+                               okText="关闭" cancelText="取消">
                             <Tabs type="card">
                                 <TabPane tab="注册" key="2">
                                     <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
-                                            <Input placeholder="请输入您的账号" {...getFieldProps('r_userName')}/>
+                                            {getFieldDecorator('r_userName', {
+                                                rules: [{ required: true, message: '请输入您的账号!' }],
+                                            })(
+                                                <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="请输入您的账号" />
+                                            )}
                                         </FromItem>
                                         <FromItem label="密码">
-                                            <Input type="password"
-                                                   placeholder="请输入您的密码" {...getFieldProps('r_password')}/>
+                                            {getFieldDecorator('r_password', {
+                                                rules: [{ required: true, message: '请输入您的密码!' }],
+                                            })(
+                                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="请输入您的密码" />
+                                            )}
                                         </FromItem>
                                         <FromItem label="确认密码">
-                                            <Input type="password"
-                                                   placeholder="请确认您的密码" {...getFieldProps('r_confirmPassword')}/>
+                                            {getFieldDecorator('r_confirmPassword', {
+                                                rules: [{ required: true, message: '请确认您的密码!' }],
+                                            })(
+                                                <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="请确认您的密码" />
+                                            )}
                                         </FromItem>
                                         <Button type="primary" htmlType="submit">注册</Button>
                                     </Form>
