@@ -13,19 +13,19 @@ export default class PCIndex extends React.Component {
                 <MobileHeader/>
                 <Tabs>
                     <TabPane tab="军事" key="1">
-                        <MobileList type="war" page={1} count={22}/>
+                        <MobileList type="war" page={1} count={10}/>
                     </TabPane>
-                    <TabPane tab="社会" key="2">
-
+                    <TabPane tab="体育" key="2">
+                        <MobileList type="sport" page={1} count={10}/>
                     </TabPane>
-                    <TabPane tab="国内" key="3">
-
+                    <TabPane tab="科技" key="3">
+                        <MobileList type="tech" page={1} count={10}/>
                     </TabPane>
-                    <TabPane tab="国际" key="4">
-
+                    <TabPane tab="教育" key="4">
+                        <MobileList type="edu" page={1} count={10}/>
                     </TabPane>
                     <TabPane tab="娱乐" key="5">
-
+                        <MobileList type="ent" page={1} count={10}/>
                     </TabPane>
                 </Tabs>
                 <MobileFooter/>

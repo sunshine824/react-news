@@ -45,8 +45,10 @@ export default class PCNewsImageBlock extends React.Component {
                                     </div>
                                     <div class="m_article_desc clearfix">
                                         <div class="m_article_desc_l">
-                                            <span class="m_debate_channel">
-                                                {newItem.channelname}
+                                            <span class="m_article_channel">
+                                                {
+                                                    newItem.channelname=='war' ? '军事' : 'sport' ? '体育' : 'tech' ? '科技' : 'edu' ? '教育' : 'ent' ? '娱乐' : ''
+                                                }
                                             </span>
                                             <span class="m_article_time">
                                                 {newItem.time}
