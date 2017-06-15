@@ -127,14 +127,14 @@ class PCHeader extends React.Component {
             </Menu.Item>;
 
         const menu = [
-            {key: 'top', icon: 'appstore', title: '头条'},
-            {key: 'shihui', icon: 'appstore', title: '社会'},
-            {key: 'guonei', icon: 'appstore', title: '国内'},
-            {key: 'guoji', icon: 'appstore', title: '国际'},
-            {key: 'yule', icon: 'appstore', title: '娱乐'},
-            {key: 'tiyu', icon: 'appstore', title: '体育'},
-            {key: 'keji', icon: 'appstore', title: '科技'},
-            {key: 'shishang', icon: 'appstore', title: '时尚'},
+            {key: 'war', icon: 'appstore', title: '军事'},
+            {key: 'sport', icon: 'appstore', title: '体育'},
+            {key: 'tech', icon: 'appstore', title: '科技'},
+            {key: 'edu', icon: 'appstore', title: '教育'},
+            {key: 'ent', icon: 'appstore', title: '娱乐'},
+            {key: 'gupiao', icon: 'appstore', title: '股票'},
+            {key: 'travel', icon: 'appstore', title: '旅游'},
+            {key: 'money', icon: 'appstore', title: '财经'},
         ]
         return (
             <header>
