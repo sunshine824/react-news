@@ -25,7 +25,8 @@ class PCHeader extends React.Component {
             action: 'Login',
             hasLogined: false,
             userNickName: '',
-            userId: 0
+            userId: 0,
+            formLayout: 'horizontal',
         }
     };
 
@@ -106,6 +107,7 @@ class PCHeader extends React.Component {
     };
 
     render() {
+        const { formLayout } = this.state;
         let {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
             ?
@@ -164,7 +166,7 @@ class PCHeader extends React.Component {
                                okText="关闭" cancelText="取消">
                             <Tabs type="card" onChange={this.callback.bind(this)}>
                                 <TabPane tab="登录" key="1">
-                                    <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                                    <Form layout={formLayout} onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
                                             {getFieldDecorator('userName', {
                                                 rules: [{required: false, message: '请输入您的账号!'}],
@@ -185,7 +187,7 @@ class PCHeader extends React.Component {
                                     </Form>
                                 </TabPane>
                                 <TabPane tab="注册" key="2">
-                                    <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                                    <Form layout={formLayout} onSubmit={this.handleSubmit.bind(this)}>
                                         <FromItem label="账户">
                                             {getFieldDecorator('r_userName', {
                                                 rules: [{required: false, message: '请输入您的账号!'}],

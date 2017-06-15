@@ -15,7 +15,8 @@ class MobileHeader extends React.Component {
             action: 'Login',
             hasLogined: false,
             userNickName: '',
-            userId: 0
+            userId: 0,
+            formLayout: 'horizontal',
         }
     };
 
@@ -64,11 +65,22 @@ class MobileHeader extends React.Component {
         this.setModalVisible(false)
     };
 
-    login(){
+    login() {
         this.setModalVisible(true)
     };
 
+    callback(key) {
+        key == 1 ? this.setState({action: 'login'}) : this.setState({action: 'register'})
+    };
+
+    logout() {
+        localStorage.userid = '';
+        localStorage.userNickName = '';
+        this.setState({hasLogined: false});
+    };
+
     render() {
+        const { formLayout } = this.state;
         let {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
             ?
@@ -89,9 +101,30 @@ class MobileHeader extends React.Component {
                        onCancel={this.setModalVisible.bind(this, false)}
                        onOk={this.setModalVisible.bind(this, false)}
                        okText="关闭" cancelText="取消">
-                    <Tabs type="card">
+                    <Tabs type="card" onChange={this.callback.bind(this)}>
+                        <TabPane tab="登录" key="1">
+                            <Form layout={formLayout} onSubmit={this.handleSubmit.bind(this)}>
+                                <FromItem label="账户">
+                                    {getFieldDecorator('userName', {
+                                        rules: [{required: false, message: '请输入您的账号!'}],
+                                    })(
+                                        <Input prefix={<Icon type="user" style={{fontSize: 13}}/>}
+                                               placeholder="请输入您的账号"/>
+                                    )}
+                                </FromItem>
+                                <FromItem label="密码">
+                                    {getFieldDecorator('password', {
+                                        rules: [{required: false, message: '请输入您的密码!'}],
+                                    })(
+                                        <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>}
+                                               type="password" placeholder="请输入您的密码"/>
+                                    )}
+                                </FromItem>
+                                <Button type="primary" htmlType="submit">登录</Button>
+                            </Form>
+                        </TabPane>
                         <TabPane tab="注册" key="2">
-                            <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                            <Form layout={formLayout} onSubmit={this.handleSubmit.bind(this)}>
                                 <FromItem label="账户">
                                     {getFieldDecorator('r_userName', {
                                         rules: [{required: true, message: '请输入您的账号!'}],
@@ -125,4 +158,4 @@ class MobileHeader extends React.Component {
         );
     };
 }
-export default MobileHeader=Form.create({})(MobileHeader)
+export default MobileHeader = Form.create({})(MobileHeader)
