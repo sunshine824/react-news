@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import {Row, Col, Tabs, Carousel} from 'antd';
 const TabPane=Tabs.TabPane;
 import PCNewsBlock from './pc_news_block'
+import PCNewsImageBlock from './pc_news_img_block'
 
 export default class PCNewsContainer extends React.Component {
     render() {
@@ -31,18 +32,23 @@ export default class PCNewsContainer extends React.Component {
                                     <div><img src="./src/images/carousel_5.jpg"/></div>
                                 </Carousel>
                             </div>
+                            <PCNewsImageBlock count={6} type="war" width="400px" cartTitle="军事新闻" imageWidth="112px" page={1}/>
                         </div>
-                        <Tabs class="tabs_news">
+                        <Tabs class="tabs_news" type="card">
                             <TabPane tab="军事" key="1">
-                                <PCNewsBlock count={10} type="war" page={1} width="99%" />
+                                <PCNewsBlock count={19} type="war" page={1} width="99%" />
                             </TabPane>
                             <TabPane tab="体育" key="2">
-                                <PCNewsBlock count={10} type="sport" page={1} width="99%"/>
+                                <PCNewsBlock count={19} type="sport" page={1} width="99%"/>
                             </TabPane>
                             <TabPane tab="科技" key="3">
-                                <PCNewsBlock count={10} type="tech" page={1} width="99%" />
+                                <PCNewsBlock count={19} type="tech" page={1} width="99%" />
+                            </TabPane>
+                            <TabPane tab="教育" key="4">
+                                <PCNewsBlock count={19} type="edu" page={1} width="99%" />
                             </TabPane>
                         </Tabs>
+                        <PCNewsImageBlock count={8} type="ent" width="100%" cartTitle="娱乐新闻" imageWidth="112px" page={1}/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

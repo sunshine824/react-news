@@ -4,6 +4,7 @@ import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import {Tabs} from 'antd';
 const TabPane = Tabs.TabPane;
+import MobileList from './mobile_list'
 
 export default class PCIndex extends React.Component {
     render() {
@@ -11,8 +12,8 @@ export default class PCIndex extends React.Component {
             <div>
                 <MobileHeader/>
                 <Tabs>
-                    <TabPane tab="头条" key="1">
-
+                    <TabPane tab="军事" key="1">
+                        <MobileList type="war" page={1} count={22}/>
                     </TabPane>
                     <TabPane tab="社会" key="2">
 
