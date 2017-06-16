@@ -13,7 +13,8 @@ export default class PCNewsDetails extends React.Component {
         var myFetchOptions = {
             method: 'GET'
         };
-        fetch('http://wangyi.butterfly.mopaasapp.com/detail/api?simpleId=' + this.props.params.id, myFetchOptions)
+        const {match} = this.props
+        fetch('http://wangyi.butterfly.mopaasapp.com/detail/api?simpleId=' + match.params.id, myFetchOptions)
             .then(res => {
                 return res.json()
             })
