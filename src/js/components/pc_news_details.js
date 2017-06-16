@@ -9,8 +9,7 @@ export default class PCNewsDetails extends React.Component {
         };
     };
 
-    componentDidMount({match}) {
-        console.log(match.params.id)
+    componentDidMount() {
         var myFetchOptions = {
             method: 'GET'
         };
@@ -36,6 +35,7 @@ export default class PCNewsDetails extends React.Component {
         const self = this
         return (
             <div>
+                4545455
                 <Row>
                     <Col span={2}></Col>
                     <Col span={14} class="container">
