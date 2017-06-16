@@ -1,11 +1,49 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {Row, Col} from 'antd'
 
-export default class PCIndex extends React.Component {
+export default class PCNewsDetails extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            newsItem: ''
+        };
+    };
+
+    componentDidMount({match}) {
+        console.log(match.params.id)
+        var myFetchOptions = {
+            method: 'GET'
+        };
+        fetch('http://wangyi.butterfly.mopaasapp.com/detail/api?simpleId=' + this.props.params.id, myFetchOptions)
+            .then(res => {
+                return res.json()
+            })
+            .then(json => {
+                this.setState({newsItem: json})
+                document.title = this.state.newsItem.title + " - React News | React 驱动的新闻平台"
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
+
+
+    createMarkup() {
+        return {__html: this.state.newsItem.content};
+    };
+
     render() {
+        const self = this
         return (
             <div>
-                <h1>这是详情页面</h1>
+                <Row>
+                    <Col span={2}></Col>
+                    <Col span={14} class="container">
+                        <div class="articleContainer" dangerouslySetInnerHTML={self.createMarkup()}></div>
+                    </Col>
+                    <Col span={6}></Col>
+                    <Col span={2}></Col>
+                </Row>
             </div>
         );
     };
