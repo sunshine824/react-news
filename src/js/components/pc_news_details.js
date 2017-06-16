@@ -1,5 +1,8 @@
 import React from 'react';
-import {Row, Col} from 'antd'
+import {Row, Col, BackTop} from 'antd'
+import PCHeader from './pc_header'
+import PCFooter from './pc_footer';
+import PCNewsImageBlock from './pc_news_img_block'
 
 export default class PCNewsDetails extends React.Component {
     constructor() {
@@ -36,15 +39,19 @@ export default class PCNewsDetails extends React.Component {
         const self = this
         return (
             <div>
-                4545455
+                <PCHeader/>
                 <Row>
                     <Col span={2}></Col>
                     <Col span={14} class="container">
                         <div class="articleContainer" dangerouslySetInnerHTML={self.createMarkup()}></div>
                     </Col>
-                    <Col span={6}></Col>
+                    <Col span={6}>
+                        <PCNewsImageBlock type="war" count={10} page={1}  width="100%" cartTitle="军事新闻" imageWidth="150px" />
+                    </Col>
                     <Col span={2}></Col>
                 </Row>
+                <PCFooter/>
+                <BackTop/>
             </div>
         );
     };
