@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Row,Col} from 'antd'
+import {Row, Col} from 'antd'
 import {Link} from 'react-router-dom'
 
 export default class PCNewsImageBlock extends React.Component {
@@ -28,36 +28,58 @@ export default class PCNewsImageBlock extends React.Component {
             })
     }
 
+    matchType(type) {
+        console.log(type)
+        switch (type) {
+            case 'war':
+                return '军事'
+                break;
+            case 'sport':
+                return '体育'
+                break;
+            case 'tech':
+                return '科技'
+                break;
+            case 'edu':
+                return '教育'
+                break;
+            case 'ent':
+                return '娱乐'
+                break;
+        }
+    }
+
     render() {
+        const self=this
         const {news} = this.state;
         const newsList = news.size
             ?
             news.list.map((newItem, index) => {
                 //console.log(newItem)
                 return <section key={index} class="m_article list-item special_section clearfix">
-                            <a href={`details/${newItem.id}`}>
-                                <div class="m_article_img">
-                                    <img src={newItem.imgurl} alt={newItem.title} />
-                                </div>
-                                <div class="m_article_info">
-                                    <div class="m_article_title">
-                                        <span>{newItem.title}</span>
-                                    </div>
-                                    <div class="m_article_desc clearfix">
-                                        <div class="m_article_desc_l">
+                    <a href={`details/${newItem.id}`}>
+                        <div class="m_article_img">
+                            <img src={newItem.imgurl} alt={newItem.title}/>
+                        </div>
+                        <div class="m_article_info">
+                            <div class="m_article_title">
+                                <span>{newItem.title}</span>
+                            </div>
+                            <div class="m_article_desc clearfix">
+                                <div class="m_article_desc_l">
                                             <span class="m_article_channel">
                                                 {
-                                                    newItem.channelname=='war' ? '军事' : 'sport' ? '体育' : 'tech' ? '科技' : 'edu' ? '教育' : 'ent' ? '娱乐' : ''
+                                                    self.matchType(newItem.channelname)
                                                 }
                                             </span>
-                                            <span class="m_article_time">
+                                    <span class="m_article_time">
                                                 {newItem.time}
                                             </span>
-                                        </div>
-                                    </div>
                                 </div>
-                            </a>
-                        </section>
+                            </div>
+                        </div>
+                    </a>
+                </section>
             })
             :
             '没有加载到数据';

@@ -2,17 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
-import {Tabs} from 'antd';
+import {Tabs, Carousel} from 'antd';
 const TabPane = Tabs.TabPane;
 import MobileList from './mobile_list'
 
 export default class PCIndex extends React.Component {
     render() {
+        const settings={
+            dots:true,
+            infinite:true,
+            speed:500,
+            sliderToShow:1,
+            autoplay:true,
+            width:'100%'
+        };
+        const imgs=['carousel_1.jpg','carousel_2.jpg','carousel_3.jpg','carousel_4.jpg','carousel_5.jpg']
         return (
             <div>
                 <MobileHeader/>
                 <Tabs>
                     <TabPane tab="军事" key="1">
+                        <div class="carousel">
+                            <Carousel {...settings}>
+                                {
+                                    imgs.map(item=>{
+                                        return  `<div><img src="./src/images/${item}"/></div>`
+                                    })
+                                }
+                            </Carousel>
+                        </div>
                         <MobileList type="war" page={1} count={10}/>
                     </TabPane>
                     <TabPane tab="体育" key="2">
