@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Card} from 'antd'
-import { Link } from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
 
 export default class PCNewsBlock extends React.Component {
     constructor() {
@@ -35,21 +39,23 @@ export default class PCNewsBlock extends React.Component {
             news.list.map((newItem, index) => {
                 //console.log(newItem)
                 return <li key={index}>
-                            <a href={`details/${newItem.id}`} target="_blank">
+                            <Link to={`details/${newItem.id}`} target="_blank">
                                 {newItem.title}
-                            </a>
+                            </Link>
                         </li>
             })
             :
             '没有加载到数据';
         return (
-            <div class="topNewsList">
-                <Card>
-                    <ul>
-                        {newsList}
-                    </ul>
-                </Card>
-            </div>
+            <Router>
+                <div class="topNewsList">
+                    <Card>
+                        <ul>
+                            {newsList}
+                        </ul>
+                    </Card>
+                </div>
+            </Router>
         );
     };
 }

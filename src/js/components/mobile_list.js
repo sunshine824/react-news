@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Row, Col} from 'antd'
-import {Link} from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
 
 export default class PCNewsImageBlock extends React.Component {
     constructor() {
@@ -57,7 +61,7 @@ export default class PCNewsImageBlock extends React.Component {
             news.list.map((newItem, index) => {
                 //console.log(newItem)
                 return <section key={index} class="m_article list-item special_section clearfix">
-                    <a href={`details/${newItem.id}`}>
+                    <Link to={`details/${newItem.id}`}>
                         <div class="m_article_img">
                             <img src={newItem.imgurl} alt={newItem.title}/>
                         </div>
@@ -78,19 +82,21 @@ export default class PCNewsImageBlock extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </section>
             })
             :
             '没有加载到数据';
         return (
-            <div>
-                <Row>
-                    <Col span={24}>
-                        {newsList}
-                    </Col>
-                </Row>
-            </div>
+            <Router>
+                <div>
+                    <Row>
+                        <Col span={24}>
+                            {newsList}
+                        </Col>
+                    </Row>
+                </div>
+            </Router>
         );
     };
 }
