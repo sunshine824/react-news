@@ -13,9 +13,8 @@ export default class PCIndex extends React.Component {
             infinite:true,
             speed:500,
             sliderToShow:1,
-            autoplay:true,
-            width:'100%'
-        };
+            autoplay:true
+        }
         const imgs=['carousel_1.jpg','carousel_2.jpg','carousel_3.jpg','carousel_4.jpg','carousel_5.jpg']
         return (
             <div>
@@ -25,8 +24,8 @@ export default class PCIndex extends React.Component {
                         <div class="carousel">
                             <Carousel {...settings}>
                                 {
-                                    imgs.map(item=>{
-                                        return  `<div><img src="./src/images/${item}"/></div>`
+                                    imgs.map((item,index)=>{
+                                        return <div key={index}><img src={`./src/images/${item}`}/></div>
                                     })
                                 }
                             </Carousel>
