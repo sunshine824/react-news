@@ -2,7 +2,6 @@ import React from 'react';
 import {Card} from 'antd'
 import {
     BrowserRouter as Router,
-    Route,
     Link
 } from 'react-router-dom'
 
@@ -62,11 +61,13 @@ export default class PCNewsImageBlock extends React.Component {
             :
             '没有加载到数据';
         return (
-            <div className="topNewsList">
-                <Card title={this.props.cartTitle} bordered={true} style={{width: this.props.width}}>
-                    {newsList}
-                </Card>
-            </div>
+            <Router>
+                <div className="topNewsList">
+                    <Card title={this.props.cartTitle} bordered={true} style={{width: this.props.width}}>
+                        {newsList}
+                    </Card>
+                </div>
+            </Router>
         );
     };
 }

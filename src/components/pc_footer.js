@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Row, Col} from 'antd';
 
 export default class PCFooter extends React.Component {

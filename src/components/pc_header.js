@@ -3,15 +3,12 @@
  */
 import React from 'react';
 import Mock from 'mockjs';
-import {Row, Col, Menu, Icon, message, Form, Input, Button, Checkbox, Modal, Tabs} from 'antd';
+import {Row, Col, Menu, Icon, message, Form, Input, Button, Modal, Tabs} from 'antd';
 import {
     BrowserRouter as Router,
-    Route,
     Link
 } from 'react-router-dom'
 const FromItem = Form.Item;
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 const TabPane = Tabs.TabPane;
 
 Mock.mock('/api/login', {

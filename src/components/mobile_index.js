@@ -24,7 +24,7 @@ export default class PCIndex extends React.Component {
                             <Carousel {...settings}>
                                 {
                                     imgs.map((item,index)=>{
-                                        return <div key={index}><img src={`./images/${item}`}/></div>
+                                        return <div key={index}><img src={`./images/${item}`} alt=""/></div>
                                     })
                                 }
                             </Carousel>

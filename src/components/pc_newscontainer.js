@@ -2,7 +2,6 @@
  * Created by Gatsby on 2017/6/15.
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Row, Col, Tabs, Carousel} from 'antd';
 import PCNewsBlock from './pc_news_block'
 import PCNewsImageBlock from './pc_news_img_block'
@@ -25,11 +24,11 @@ export default class PCNewsContainer extends React.Component {
                         <div className="leftContainer">
                             <div className="carousel">
                                 <Carousel {...settings}>
-                                    <div><img src="./images/carousel_1.jpg"/></div>
-                                    <div><img src="./images/carousel_2.jpg"/></div>
-                                    <div><img src="./images/carousel_3.jpg"/></div>
-                                    <div><img src="./images/carousel_4.jpg"/></div>
-                                    <div><img src="./images/carousel_5.jpg"/></div>
+                                    <div><img src="./images/carousel_1.jpg" alt=""/></div>
+                                    <div><img src="./images/carousel_2.jpg" alt=""/></div>
+                                    <div><img src="./images/carousel_3.jpg" alt=""/></div>
+                                    <div><img src="./images/carousel_4.jpg" alt=""/></div>
+                                    <div><img src="./images/carousel_5.jpg" alt=""/></div>
                                 </Carousel>
                             </div>
                             <PCNewsImageBlock count={6} type="war" width="400px" cartTitle="军事新闻" imageWidth="112px" page={1}/>
