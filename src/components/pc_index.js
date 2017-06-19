@@ -1,9 +1,9 @@
-import React from 'react';
+import React,{Component} from 'react';
 import PCHeader from './pc_header'
 import PCFooter from './pc_footer';
 import PCNewsContainer from './pc_newscontainer';
 
-export default class PCIndex extends React.Component {
+export default class PCIndex extends Component {
     render() {
         return (
             <div>

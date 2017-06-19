@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Card} from 'antd'
 import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 
-export default class PCNewsBlock extends React.Component {
+export default class PCNewsBlock extends Component {
     constructor() {
         super()
         this.state = {

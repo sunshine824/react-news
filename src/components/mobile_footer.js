@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Row, Col} from 'antd';
 
-export default class MobileFooter extends React.Component {
+export default class MobileFooter extends Component {
     render() {
         return (
             <footer>

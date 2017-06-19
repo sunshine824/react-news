@@ -1,13 +1,13 @@
 /**
  * Created by Gatsby on 2017/6/15.
  */
-import React from 'react';
+import React,{Component} from 'react';
 import {Row, Col, Tabs, Carousel} from 'antd';
 import PCNewsBlock from './pc_news_block'
 import PCNewsImageBlock from './pc_news_img_block'
 const TabPane=Tabs.TabPane;
 
-export default class PCNewsContainer extends React.Component {
+export default class PCNewsContainer extends Component {
     render() {
         const settings={
             dots:true,

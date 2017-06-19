@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Icon, message, Form, Input, Button, Modal, Tabs} from 'antd';
 import {
     BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
 const FromItem = Form.Item;
 const TabPane = Tabs.TabPane;
 
-class MobileHeader extends React.Component {
+class MobileHeader extends Component {
     constructor() {
         super();
         this.state = {

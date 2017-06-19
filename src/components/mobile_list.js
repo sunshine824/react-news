@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Row, Col} from 'antd'
 import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 
-export default class PCNewsImageBlock extends React.Component {
+export default class PCNewsImageBlock extends Component {
     constructor() {
         super()
         this.state = {

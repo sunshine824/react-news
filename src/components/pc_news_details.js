@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Row, Col, BackTop} from 'antd'
 import PCHeader from './pc_header'
 import PCFooter from './pc_footer';
 import PCNewsImageBlock from './pc_news_img_block'
 
-export default class PCNewsDetails extends React.Component {
+export default class PCNewsDetails extends Component {
     constructor() {
         super()
         this.state = {

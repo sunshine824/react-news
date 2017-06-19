@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{Component} from 'react';
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import MobileList from './mobile_list'
 import {Tabs, Carousel} from 'antd';
 const TabPane = Tabs.TabPane;
 
-export default class PCIndex extends React.Component {
+export default class PCIndex extends Component {
     render() {
         const settings={
             dots:true,

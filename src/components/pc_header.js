@@ -1,7 +1,7 @@
 /**
  * Created by Gatsby on 2017/6/13.
  */
-import React from 'react';
+import React,{Component} from 'react';
 import Mock from 'mockjs';
 import {Row, Col, Menu, Icon, message, Form, Input, Button, Modal, Tabs} from 'antd';
 import {
@@ -18,7 +18,7 @@ Mock.mock('/api/login', {
     }
 })
 
-class PCHeader extends React.Component {
+class PCHeader extends Component {
     constructor() {
         super();
         this.state = {

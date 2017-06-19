@@ -1,9 +1,9 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Row, Col, BackTop} from 'antd'
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer';
 
-export default class MobileNewsDetails extends React.Component {
+export default class MobileNewsDetails extends Component {
     constructor() {
         super()
         this.state = {
