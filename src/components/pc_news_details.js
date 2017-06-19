@@ -1,7 +1,8 @@
 import React from 'react';
 import {Row, Col, BackTop} from 'antd'
-import MobileHeader from './mobile_header'
-import MobileFooter from './mobile_footer';
+import PCHeader from './pc_header'
+import PCFooter from './pc_footer';
+import PCNewsImageBlock from './pc_news_img_block'
 
 export default class PCNewsDetails extends React.Component {
     constructor() {
@@ -41,8 +42,8 @@ export default class PCNewsDetails extends React.Component {
                 <PCHeader/>
                 <Row>
                     <Col span={2}></Col>
-                    <Col span={14} class="container">
-                        <div class="articleContainer" dangerouslySetInnerHTML={self.createMarkup()}></div>
+                    <Col span={14} className="container">
+                        <div className="articleContainer" dangerouslySetInnerHTML={self.createMarkup()}></div>
                     </Col>
                     <Col span={6}>
                         <PCNewsImageBlock type="war" count={10} page={1}  width="100%" cartTitle="军事新闻" imageWidth="150px" />

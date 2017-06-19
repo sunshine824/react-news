@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Row, Col} from 'antd'
 import {
     BrowserRouter as Router,
@@ -60,23 +59,23 @@ export default class PCNewsImageBlock extends React.Component {
             ?
             news.list.map((newItem, index) => {
                 //console.log(newItem)
-                return <section key={index} class="m_article list-item special_section clearfix">
+                return <section key={index} className="m_article list-item special_section clearfix">
                     <Link to={`details/${newItem.id}`}>
-                        <div class="m_article_img">
+                        <div className="m_article_img">
                             <img src={newItem.imgurl} alt={newItem.title}/>
                         </div>
-                        <div class="m_article_info">
-                            <div class="m_article_title">
+                        <div className="m_article_info">
+                            <div className="m_article_title">
                                 <span>{newItem.title}</span>
                             </div>
-                            <div class="m_article_desc clearfix">
-                                <div class="m_article_desc_l">
-                                            <span class="m_article_channel">
+                            <div className="m_article_desc clearfix">
+                                <div className="m_article_desc_l">
+                                            <span className="m_article_channel">
                                                 {
                                                     self.matchType(newItem.channelname)
                                                 }
                                             </span>
-                                    <span class="m_article_time">
+                                    <span className="m_article_time">
                                                 {newItem.time}
                                             </span>
                                 </div>

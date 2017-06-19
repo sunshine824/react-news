@@ -4,9 +4,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Row, Col, Tabs, Carousel} from 'antd';
-const TabPane=Tabs.TabPane;
 import PCNewsBlock from './pc_news_block'
 import PCNewsImageBlock from './pc_news_img_block'
+const TabPane=Tabs.TabPane;
 
 export default class PCNewsContainer extends React.Component {
     render() {
@@ -21,20 +21,20 @@ export default class PCNewsContainer extends React.Component {
             <div>
                 <Row>
                     <Col span={2}></Col>
-                    <Col span={20} class="container">
-                        <div class="leftContainer">
-                            <div class="carousel">
+                    <Col span={20} className="container">
+                        <div className="leftContainer">
+                            <div className="carousel">
                                 <Carousel {...settings}>
-                                    <div><img src="./src/images/carousel_1.jpg"/></div>
-                                    <div><img src="./src/images/carousel_2.jpg"/></div>
-                                    <div><img src="./src/images/carousel_3.jpg"/></div>
-                                    <div><img src="./src/images/carousel_4.jpg"/></div>
-                                    <div><img src="./src/images/carousel_5.jpg"/></div>
+                                    <div><img src="./images/carousel_1.jpg"/></div>
+                                    <div><img src="./images/carousel_2.jpg"/></div>
+                                    <div><img src="./images/carousel_3.jpg"/></div>
+                                    <div><img src="./images/carousel_4.jpg"/></div>
+                                    <div><img src="./images/carousel_5.jpg"/></div>
                                 </Carousel>
                             </div>
                             <PCNewsImageBlock count={6} type="war" width="400px" cartTitle="军事新闻" imageWidth="112px" page={1}/>
                         </div>
-                        <Tabs class="tabs_news" type="card">
+                        <Tabs className="tabs_news" type="card">
                             <TabPane tab="军事" key="1">
                                 <PCNewsBlock count={19} type="war" page={1} width="99%" />
                             </TabPane>

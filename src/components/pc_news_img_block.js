@@ -1,7 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Card} from 'antd'
-import {Link} from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
 
 export default class PCNewsImageBlock extends React.Component {
     constructor() {
@@ -45,21 +48,21 @@ export default class PCNewsImageBlock extends React.Component {
             ?
             news.list.map((newItem, index) => {
                 //console.log(newItem)
-                return <div key={index} class="imageblock">
-                            <a href={`details/${newItem.id}`} target="_blank">
-                                <div class="custom-image">
+                return <div key={index} className="imageblock">
+                            <Link to={`details/${newItem.id}`} target="_blank">
+                                <div className="custom-image">
                                     <img alt="" src={newItem.imgurl} style={styleImage}/>
                                 </div>
-                                <div class="custom-card">
+                                <div className="custom-card">
                                     <h3 style={styleH3}>{newItem.title}</h3>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
             })
             :
             '没有加载到数据';
         return (
-            <div class="topNewsList">
+            <div className="topNewsList">
                 <Card title={this.props.cartTitle} bordered={true} style={{width: this.props.width}}>
                     {newsList}
                 </Card>

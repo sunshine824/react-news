@@ -116,7 +116,7 @@ class PCHeader extends React.Component {
         let {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
             ?
-            <Menu.Item key="logout" class="register">
+            <Menu.Item key="logout" className="register">
                 <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
                 &nbsp;&nbsp;
                 <Link target="_blank">
@@ -126,7 +126,7 @@ class PCHeader extends React.Component {
                 <Button ghost htmlType="button" onClick={this.logout.bind(this)}>退出</Button>
             </Menu.Item>
             :
-            <Menu.Item key="register" class="register">
+            <Menu.Item key="register" className="register">
                 <Icon type="appstore" style={{paddingRight: '8px'}}></Icon>
                 注册/登录
             </Menu.Item>;
@@ -147,8 +147,8 @@ class PCHeader extends React.Component {
                     <Row>
                         <Col span={2}></Col>
                         <Col span={4}>
-                            <a href="/" class="logo">
-                                <img src="./src/images/logo.png" alt="logo"/>
+                            <a href="/" className="logo">
+                                <img src="./images/logo.png" alt="logo"/>
                                 <span>ReactNews</span>
                             </a>
                         </Col>

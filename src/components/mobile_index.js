@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
+import MobileList from './mobile_list'
 import {Tabs, Carousel} from 'antd';
 const TabPane = Tabs.TabPane;
-import MobileList from './mobile_list'
 
 export default class PCIndex extends React.Component {
     render() {
@@ -21,11 +20,11 @@ export default class PCIndex extends React.Component {
                 <MobileHeader/>
                 <Tabs>
                     <TabPane tab="军事" key="1">
-                        <div class="carousel">
+                        <div className="carousel">
                             <Carousel {...settings}>
                                 {
                                     imgs.map((item,index)=>{
-                                        return <div key={index}><img src={`./src/images/${item}`}/></div>
+                                        return <div key={index}><img src={`./images/${item}`}/></div>
                                     })
                                 }
                             </Carousel>

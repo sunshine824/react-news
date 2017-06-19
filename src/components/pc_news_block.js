@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Card} from 'antd'
 import {
     BrowserRouter as Router,
-    Route,
     Link
 } from 'react-router-dom'
 
@@ -48,7 +46,7 @@ export default class PCNewsBlock extends React.Component {
             '没有加载到数据';
         return (
             <Router>
-                <div class="topNewsList">
+                <div className="topNewsList">
                     <Card>
                         <ul>
                             {newsList}
