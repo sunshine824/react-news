@@ -5,7 +5,7 @@ import {
     Link
 } from 'react-router-dom'
 
-export default class PCNewsImageBlock extends Component {
+export default class MobileList extends Component {
     constructor() {
         super()
         this.state = {
@@ -31,7 +31,6 @@ export default class PCNewsImageBlock extends Component {
     }
 
     matchType(type) {
-        console.log(type)
         switch (type) {
             case 'war':
                 return '军事'
@@ -59,7 +58,7 @@ export default class PCNewsImageBlock extends Component {
             news.list.map((newItem, index) => {
                 //console.log(newItem)
                 return <section key={index} className="m_article list-item special_section clearfix">
-                    <Link to={`details/${newItem.id}`}>
+                    <a href={`details/${newItem.id}`}>
                         <div className="m_article_img">
                             <img src={newItem.imgurl} alt={newItem.title}/>
                         </div>
@@ -80,7 +79,7 @@ export default class PCNewsImageBlock extends Component {
                                 </div>
                             </div>
                         </div>
-                    </Link>
+                    </a>
                 </section>
             })
             :

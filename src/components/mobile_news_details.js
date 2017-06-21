@@ -27,8 +27,7 @@ export default class MobileNewsDetails extends Component {
             .catch(err => {
                 console.log(err.message)
             })
-    }
-
+    };
 
     createMarkup() {
         return {__html: this.state.newsItem.content};
