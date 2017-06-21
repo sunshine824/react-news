@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Card} from 'antd'
 import {
-    BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 
@@ -45,15 +44,13 @@ export default class PCNewsBlock extends Component {
             :
             '没有加载到数据';
         return (
-            <Router>
-                <div className="topNewsList">
-                    <Card>
-                        <ul>
-                            {newsList}
-                        </ul>
-                    </Card>
-                </div>
-            </Router>
+            <div className="topNewsList">
+                <Card>
+                    <ul>
+                        {newsList}
+                    </ul>
+                </Card>
+            </div>
         );
     };
 }
